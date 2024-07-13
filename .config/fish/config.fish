@@ -1,0 +1,14 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+function init-markdown
+    /usr/local/bin/init-md.fish
+    if test $status -eq 0
+        echo "Started monitoring"
+    else
+        echo "Failed to initialize md_monitor.fish"
+    end
+end
+
+alias config "/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
