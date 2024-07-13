@@ -1,0 +1,20 @@
+#!/bin/bash env
+
+# Directory to place symlinks
+# TODO: Make configurable
+TARGET_DIR=~/Documents/notes/markdowns
+
+# Create the target directory if needed.
+mkdir -p "$TARGET_DIR"
+
+# Monitor the current directory for new .md files
+inotifywait -m -e create --format '%w%f' . | while read NEWFILE
+do
+    # Check if the new file has .md extension
+    if [[ "$NEWFILE" == *.md ]] then
+
+    # Create a symlink in the target directory
+       ln -s "$(realpath "$NEWFILE")" "$TARGET_DIR/$(basename "$NEWFILE")"
+       echo "Created symlink for NEWFILE in TARGET_DIR"
+    fi
+done

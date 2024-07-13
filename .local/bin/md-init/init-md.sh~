@@ -1,0 +1,12 @@
+#!/bin/bash env 
+
+# Path to the main script
+SCRIPT_PATH=~/bin/md_monitor.sh
+
+# Copy the main script to the current directory
+cp "$SCRIPT_PATH" ./md_monitor.sh
+
+# Make the copied script executable
+chmod +x ./md_monitor.sh
+
+echo "Script has been placed in $(realpath ./md_monitor.sh) and made executable."
